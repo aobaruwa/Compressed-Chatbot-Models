@@ -68,9 +68,3 @@ if __name__ == "__main__":
     logger.info(f"Dump to {args.token_counts_dump}")
     handle = open(args.token_counts_dump, "wb") 
     pickle.dump(counts, handle, protocol=pickle.HIGHEST_PROTOCOL)
-
-
-"""
-python src/distillation/scripts/token_counts.py --dataloader_path '/home/femi/my_diacomp_dailyDialog/dataset/train/train.256len.db' \
-                                                --vocab_size 50257
-"""
