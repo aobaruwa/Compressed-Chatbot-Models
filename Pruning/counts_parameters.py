@@ -95,10 +95,3 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     count_rem_params(args)
-
-"""
-python counts_parameters.py --pruning_method magnitude \
-                            --threshold 0.90 \
-                            --serialization_file "/home/aobaruwa/codebase/Pruning/out/GPT2-finetune-step-1800.pkl"
-
-"""
