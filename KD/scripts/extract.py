@@ -100,11 +100,3 @@ if __name__ == "__main__":
 
     print(f"Save transfered checkpoint to {args.dump_checkpoint}.")
     torch.save(compressed_sd, args.dump_checkpoint)
-
-
-"""
-python src/distillation/scripts/extract.py --model_type 'gpt2' \
-                                   --model_name '/home/femi/my_diacomp_dailyDialog/models/small' \
-                                   --dump_checkpoint '/home/femi/compression/my_diacomp_dailyDialog/src/distillation/out/gpt2_student_seed.pth' \
-                                   --vocab_transform 
-"""
