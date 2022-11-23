@@ -31,8 +31,8 @@ python -m torch.distributed.launch fine_prune_gpt2.py --output_dir $OUTPUT_DIR \
                           --log_dir $PRUNING_DIR \
                           --train_file $DATA_DB_FILE \
                           --model_type masked_gpt2 \
-                          --model_path /home/aobaruwa/codebase/model/medium_ft.pkl \
-                          --ckpt_file /home/aobaruwa/codebase/model/medium_ft.pkl \
+                          --model_path $CKPT_FILE \
+                          --ckpt_file $CKPT_FILE \
                           --per_gpu_train_batch_size 4 \
                           --grad_acc_steps 8  \
                           --max_steps 3000 \
@@ -47,13 +47,13 @@ python -m torch.distributed.launch fine_prune_gpt2.py --output_dir $OUTPUT_DIR \
                           --opt_level O1 \
                           --use_fp16
 
-python fine_prune_gpt2.py --output_dir /home/aobaruwa/codebase/Pruning/out \
-                          --log_dir /home/aobaruwa/codebase/logs/pruning \
-                          --train_file /home/aobaruwa/codebase/dd_data/train.256len.db \
-                          --eval_file /home/aobaruwa/codebase/dd_data/val.txt \
+python fine_prune_gpt2.py --output_dir $DATA_DIR \
+                          --log_dir $LOG_DIR \
+                          --train_file $TRAIN_FILE \
+                          --eval_file $VAL_LOG_FILE\
                           --model_type masked_gpt2 \
-                          --model_path /home/aobaruwa/codebase/model/medium_ft.pkl \
-                          --ckpt_file /home/aobaruwa/codebase/model/medium_ft.pkl \
+                          --model_path $CKPT_FILE \
+                          --ckpt_file $CKPT_FILE \
                           --per_gpu_train_batch_size 4 \
                           --grad_acc_steps 8  \
                           --val_step 200 \
@@ -91,10 +91,10 @@ python src/distillation/scripts/token_counts.py --dataloader_path $TRAIN_DB_FILE
 
 python train_comp.py --student_type gpt2 \
                      --student_config training_configs/distilgpt2.json \
-                     --student_pretrained_weight /home/femi/compression/my_diacomp_dailyDialog/src/distillation/out/gpt2_student_seed.pth \
+                     --student_pretrained_weight $STUDENT_CKPT_FILE \
                      --train_batch_size 8 --val_batch_size 8 \
                      --teacher_type gpt2 --teacher_name gpt2 \
-                     --teacher_pretrained_weights /home/femi/my_diacomp_dailyDialog/models/small \
+                     --teacher_pretrained_weights $MODEL_DIR \
                      --alpha_ce 5.0 --alpha_mlm 2.0 --alpha_cos 1.0 --alpha_clm 0.0 \
                      --freeze_pos_embs\
                      --dump_path ./out \
@@ -109,9 +109,9 @@ python train_comp.py --student_type gpt2 \
                      --resume False \
                      --max_steps 5000 \
                      --warmup_step 1000 \
-                     --model_folder '../models/medium' \
+                     --model_folder $MODEL_DIR \
                      --save_every 4\
-                     --train_input_file '/home/femi/my_diacomp_dailyDialog/dataset/validation/valid.128len.db' \
-                     --val_input_file '/home/femi/my_diacomp_dailyDialog/dataset/validation/valid.128len.db' \
+                     --train_input_file $TRAIN_DB-FILE \
+                     --val_input_file $VALID_DB-FILE \
                      --log_dir '../dialoGPT_spk12' 
 
