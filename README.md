@@ -1,5 +1,7 @@
 ### Compressed Dialogue Models
 
+---
+
 Base chatbot was built with [DialoGPT Medium](https://www.microsoft.com/en-us/research/project/large-scale-pretraining-for-response-generation/) (with 345 million parameters)
 
 ---
