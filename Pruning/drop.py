@@ -141,12 +141,3 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     main(args)
-
-
-
-"""
-python drop.py --pruning_method magnitude \
-               --threshold 0.90 \
-               --serialization_file "/home/aobaruwa/codebase/Pruning/out/GPT2-finetune-step-1800.pkl" \
-               --target_model_path "/home/aobaruwa/codebase/Pruning/out"  
-"""
