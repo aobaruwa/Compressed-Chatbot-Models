@@ -6,7 +6,7 @@ Base chatbot was built with [DialoGPT Medium](https://www.microsoft.com/en-us/re
 
 ---
 
-With Pruning  a compressed chatbot model is derived with only 30% of the parameters in DialoGPT-Medium with little degradation in engagingness.
+With Pruning a compressed chatbot model is derived with only 30% of the parameters in DialoGPT-Medium with little degradation.
 
 ---
 
