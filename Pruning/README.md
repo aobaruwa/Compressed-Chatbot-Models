@@ -1,2 +1,0 @@
-# Pruning
-Pruning for dialogue
