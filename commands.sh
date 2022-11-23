@@ -85,3 +85,6 @@ python fine_prune_gpt2.py --model_type masked_gpt2 \
                           --mask_init constant 
                           --mask_scale 0.0
     
+
+python src/distillation/scripts/token_counts.py --dataloader_path $TRAIN_DB_FILE \
+                                                --vocab_size 50257
