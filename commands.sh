@@ -88,3 +88,30 @@ python fine_prune_gpt2.py --model_type masked_gpt2 \
 
 python src/distillation/scripts/token_counts.py --dataloader_path $TRAIN_DB_FILE \
                                                 --vocab_size 50257
+
+python train_comp.py --student_type gpt2 \
+                     --student_config training_configs/distilgpt2.json \
+                     --student_pretrained_weight /home/femi/compression/my_diacomp_dailyDialog/src/distillation/out/gpt2_student_seed.pth \
+                     --train_batch_size 8 --val_batch_size 8 \
+                     --teacher_type gpt2 --teacher_name gpt2 \
+                     --teacher_pretrained_weights /home/femi/my_diacomp_dailyDialog/models/small \
+                     --alpha_ce 5.0 --alpha_mlm 2.0 --alpha_cos 1.0 --alpha_clm 0.0 \
+                     --freeze_pos_embs\
+                     --dump_path ./out \
+                     --token_counts ./out/counts.pkl \
+                     --n_epochs 10 \
+                     --n_gpu 0\
+                     --local_rank -1 \
+                     --max_seq_len 256 \
+                     --grad_acc_steps 8 \
+                     --log_every 500 \
+                     --seed 52 \
+                     --resume False \
+                     --max_steps 5000 \
+                     --warmup_step 1000 \
+                     --model_folder '../models/medium' \
+                     --save_every 4\
+                     --train_input_file '/home/femi/my_diacomp_dailyDialog/dataset/validation/valid.128len.db' \
+                     --val_input_file '/home/femi/my_diacomp_dailyDialog/dataset/validation/valid.128len.db' \
+                     --log_dir '../dialoGPT_spk12' 
+
